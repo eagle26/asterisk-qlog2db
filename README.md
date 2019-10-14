@@ -1,7 +1,7 @@
 # asterisk-qlog2db
 Migrates asterisk queue logs from plain text files to a MySQL database.
 
-#How to Use it
+# How to Use it
 
 - Clone or download the repo
 ```bash
