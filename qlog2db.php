@@ -17,6 +17,7 @@ class qlog2db{
 		if(!count($files))
 			echo "Cannot find any queue log file on path: ". config::QUEUES_LOG_PATH."\n";
 
+		echo "Synchronizing...\n";
 		foreach ($files as $filename){
 			//If cannot open the file, try with the next
 			if (!is_resource($handle = @fopen($filename, 'r'))){
@@ -44,6 +45,7 @@ class qlog2db{
 
 			fclose($handle);
 		}
+		echo "Done!\n";
 	}
 
 	/**
