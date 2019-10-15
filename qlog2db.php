@@ -74,7 +74,7 @@ class qlog2db{
 			$db->startTransaction();
 			$db->query(
 					$query,
-					$event->time,
+                    date("Y-m-d H:i:s", $event->time),
 					$event->uniqueid,
 					$event->queue,
 					$event->channel,
@@ -85,7 +85,7 @@ class qlog2db{
 					$event->data3,
 					$event->data4,
 					$event->data5,
-					$event->time
+					date("Y-m-d H:i:s", $event->time)
 				);
 			$db->endTransaction();
 		}catch (Exception $e){
