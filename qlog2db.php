@@ -89,6 +89,7 @@ class qlog2db{
 				);
 			$db->endTransaction();
 		}catch (Exception $e){
+			var_dump($event);
 			$db->rollBack();
 			die($e->getMessage()."\n");
 		}
@@ -111,18 +112,18 @@ class qlog2db{
 			'uniqueid' => $uniqueid,
 			'queue' => $queue,
 			'channel' => $channel,
-			'data' => null,
-			'data1' => null,
-			'data2' => null,
-			'data3' => null,
-			'data4' => null,
-			'data5' => null,
+			'data' => '',
+			'data1' => '',
+			'data2' => '',
+			'data3' => '',
+			'data4' => '',
+			'data5' => '',
 		];
 
 		$x = 1;
 		foreach ($extra_data as $data){
 			$index = "data{$x}";
-			$event[$index] = $data;
+			$event[$index] = utf8_encode($data);
 			$x++;
 		}
 
