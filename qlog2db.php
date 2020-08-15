@@ -19,6 +19,11 @@ class qlog2db{
 
 		echo "Synchronizing...\n";
 		foreach ($files as $filename){
+			//Check Mime Type, and skip if the file is not a text file
+			$mime = mime_content_type($filename);
+			if($mime != "text/plain")
+				continue;
+			
 			//If cannot open the file, try with the next
 			if (!is_resource($handle = @fopen($filename, 'r'))){
 				echo "Cannot open the file: {$filename}\n";
